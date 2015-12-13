@@ -6,3 +6,5 @@ var path           = require('path');
 var expressLayouts = require('express-ejs-layouts');
 var methodOverride = require('method-override');
 var mongoose       = require('mongoose');
+// Create a new express app
+var app            = express();
