@@ -13,7 +13,7 @@ angular.module('FlicPic', [])
 
     function getMovies() {
       $http
-        .get('http://localhost:3000/movies')
+        .get('https://api.themoviedb.org/3/discover/movie?api_key=213e6d38b03c7af40fb82d70ad6f0139')//api url
         .then(function(res) {
           console.log(res);
           self.all = res.data.movies;
