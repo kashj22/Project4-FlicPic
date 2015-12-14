@@ -32,14 +32,25 @@ angular.module('FlicPic', [])
         });
     }
 
-    // function getActors() {
-    //   $http
-    //     .get('https://api.themoviedb.org/3/discover/movie?api_key=213e6d38b03c7af40fb82d70ad6f0139')
-    //     .then(function(res) {
-    //       console.log(res);
-    //       self.all = res.data.actors;
-    //     });
-    // }
+    function getActors(queryString) {
+      var url = 'https://api.themoviedb.org/3/search/person?query=' + queryString + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
+      $http
+        .get()//api url
+        .then(function(res) {
+          console.log(res);
+          self.all = res.data.movies;
+        });
+    }
+
+    function getYear(queryString) {
+      var url = 'https://api.themoviedb.org/3/discover/movie?primary_release_year=' + queryString + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
+      $http
+        .get()//api url
+        .then(function(res) {
+          console.log(res);
+          self.all = res.data.movies;
+        });
+    }
 
     // function getYears() {
     //   $http
