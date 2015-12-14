@@ -5,6 +5,7 @@ var bodyParser     = require('body-parser');
 var path           = require('path');
 var expressLayouts = require('express-ejs-layouts');
 var methodOverride = require('method-override');
+var MovieDB        = require('moviedb')('213e6d38b03c7af40fb82d70ad6f0139');
 var app            = express();
 
 
