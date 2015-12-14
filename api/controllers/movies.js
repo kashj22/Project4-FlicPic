@@ -1,5 +1,9 @@
 var Movie = require('../models/movie.js');
 
+// need a function getGenres (/genres) that will return all the genres 
+// then create a dropdown with the collection returned by the server
+
+
 // GET
 function getAll(request, response) {
   Movie.find(function(error, criminals) {

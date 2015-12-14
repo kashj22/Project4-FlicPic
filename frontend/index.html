@@ -10,10 +10,14 @@
   <main ng-controller="MoviesController as movies">
     <header>
       <h1>Welcome To FlicPic</h1>
+      <h3>Find Movies by searching for titles or genres</h3>
     </header>
 
-  <form id="movies" method="GET" ng-submit="getMovies()"></form> 
+  <form id="movies" method="GET" ng-submit="getMovies()">
     <input type="text" placeholder="Enter Movie Title" ng-model="">
-
+    </form> 
+  <form id="genres" method="GET" ng-submit="getGenres()">
+    <input type="select" ng-model="">  
+    </form>
 </body>
 </html>
