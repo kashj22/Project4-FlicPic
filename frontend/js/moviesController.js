@@ -39,7 +39,7 @@ angular.module('FlicPic', [])
         .get('https://api.themoviedb.org/3/genre/movie/list?api_key=213e6d38b03c7af40fb82d70ad6f0139') //https://api.themoviedb.org/3/genre/movie/list?api_key=213e6d38b03c7af40fb82d70ad6f0139
         //genre/id/movies gets a list of movies for a particular genre by id
         .then(function(res) {
-          console.log(res);
+          console.log(res.data);
           self.genres = res.data.genres;
         });
     }
