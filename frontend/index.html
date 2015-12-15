@@ -53,6 +53,8 @@
       </form>
     </section>
 
+    {{ users.user }}
+
     <section>
       <h3>Register</h3>
       <form id="register" ng-submit="users.register()">
@@ -72,7 +74,7 @@
       </form>
     </section>
 
-
+    <br>
 
     <form id="movies" ng-submit="movies.getMovies()">
       <input type="text" placeholder="Enter Movie Title" ng-model="movies.title">
