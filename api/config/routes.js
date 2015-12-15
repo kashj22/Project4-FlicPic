@@ -3,28 +3,21 @@ var express = require('express'),
     bodyParser = require('body-parser'), //parses information from POST
     methodOverride = require('method-override'); //used to manipulate POST
 
-var moviesController = require('../controllers/movies.js');      
+var moviesController = require('../controllers/movies.js'); 
+var usersController = require('../controllers/usersController');     
 
-// http://127.0.0.1:3000/movies
-router.route('/movies')
+router.post('/login', authenticationsController.login);
+router.post('/register', authenticationsController.register);
 
-  //GET all movies
-  .get(moviesController.getAll)
+router.route('/users')
+  .get(usersController.usersIndex)
 
-  //POST a new blob
-  .post(moviesController.createMovie);
+router.route('/users/:id')
+  .get(usersController.usersShow)
+  .put(usersController.usersUpdate)
+  .patch(usersController.usersUpdate)
+  .delete(usersController.usersDelete)
 
-
-router.route('/movies/:id')
-
-  // GET return specific movie
-  .get(moviesController.getMovie)
-
-  // PATCH update existing movie
-  .patch(moviesController.updateMovie)
-
-  // DELETE remove specific movie from DB
-  .delete(moviesController.removeMovie);
 
 
 module.exports = router
