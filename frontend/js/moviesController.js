@@ -15,6 +15,7 @@ angular.module('FlicPic', [])
 
     this.getMovieByGenre = getMovieByGenre;
     this.getMovies       = getMovies;
+    // this.getActors       = getActors;
     // find out how to put all of the genres in a drop down box
 
     // this.title = "FlicPic"
@@ -59,15 +60,17 @@ angular.module('FlicPic', [])
         });
     }
 
-    function getActors() {
-      var url = 'https://api.themoviedb.org/3/search/person?query=' + this.name + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
-      $http
-        .get(url)//api url
-        .then(function(res) {
-          console.log(res);
-          self.all
-        });
-    }
+    // function getActors() {
+      
+    //   var url = 'https://api.themoviedb.org/3/search/person?query=' + this.person.name + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
+    //   // https://api.themoviedb.org/3/person/287/combined_credits?api_key=213e6d38b03c7af40fb82d70ad6f0139
+    //   $http
+    //     .get(url)//api url
+    //     .then(function(res) {
+    //       console.log(res);
+    //       self.all = res.data.person;
+    //     });
+    // }
 
     // function getYears(queryString) {
     //   var url = 'https://api.themoviedb.org/3/discover/movie?primary_release_year=' + queryString + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
