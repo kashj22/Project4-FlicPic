@@ -23,6 +23,7 @@ angular.module('FlicPic', [])
 
     // get all of the genres to populate them in an array
     self.genres = [];
+    
 
     function getMovies() {
       var url = 'http://api.themoviedb.org/3/search/movie?query=' + this.title + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
@@ -46,10 +47,9 @@ angular.module('FlicPic', [])
     }
 
     function getMovieByGenre(genre) {
+      console.log(genre);
 
-
-
-      var url = 'http://api.themoviedb.org/3/genre/' + genre + '/movies&api_key=213e6d38b03c7af40fb82d70ad6f0139' //'http://api.themoviedb.org/3/search/genre/id/movies?query=' + self.genres + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
+      var url = 'http://api.themoviedb.org/3/genre/' + genre.name + '/movies?api_key=213e6d38b03c7af40fb82d70ad6f0139' //'http://api.themoviedb.org/3/search/genre/id/movies?query=' + self.genres + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
 
       $http
         .get(url)
@@ -59,15 +59,15 @@ angular.module('FlicPic', [])
         });
     }
 
-    // function getActors(queryString) {
-    //   var url = 'https://api.themoviedb.org/3/search/person?query=' + queryString + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
-    //   $http
-    //     .get()//api url
-    //     .then(function(res) {
-    //       console.log(res);
-    //       self.all = res.data.movies;
-    //     });
-    // }
+    function getActors() {
+      var url = 'https://api.themoviedb.org/3/search/person?query=' + this.name + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
+      $http
+        .get(url)//api url
+        .then(function(res) {
+          console.log(res);
+          self.all
+        });
+    }
 
     // function getYears(queryString) {
     //   var url = 'https://api.themoviedb.org/3/discover/movie?primary_release_year=' + queryString + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
