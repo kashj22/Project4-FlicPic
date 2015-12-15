@@ -9,11 +9,14 @@ var MovieDB        = require('moviedb')('213e6d38b03c7af40fb82d70ad6f0139');
 var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
 var app            = express();
+var config         = require('./config/config');
+var User           = require('./models/user');
+var secret         = config.secret;
 
 
 // Setup the connection to our database
 var mongoose       = require('mongoose');
-mongoose.connect = 'mongodb://localhost:27017/flicpic';
+mongoose.connect(config.database);
 
 // Require our routes.js
 var routes = require('./config/routes.js')
@@ -27,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes);
 
 // start express listening on port 3000
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 console.log("Express is listening on localhost:3000");
 
 
