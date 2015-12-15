@@ -1,5 +1,5 @@
 angular
-  .module('users')
+  .module('FlicPic')
   .controller('usersController', UserController)
 
   UserController.$inject = ['User', 'TokenService']

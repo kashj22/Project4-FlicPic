@@ -1,5 +1,5 @@
 angular
-  .module('users')
+  .module('FlicPic')
   .factory('User', User);
 
 User.$inject = ['$resource', 'API'];

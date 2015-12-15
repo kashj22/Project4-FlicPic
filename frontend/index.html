@@ -13,9 +13,66 @@
 <body>
   <main ng-controller="MoviesController as movies" >
     <header>
+
+    <nav>
+      <ul>
+        <li><a href="#login">Log In</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a ng-click="users.getUsers()">Users</a></li>
+        <li><a ng-click="users.logout()">Log Out</a></li>
+      </ul>
+    </nav>
+
+
+
+
       <h1>Welcome To FlicPic</h1>
       <h3>Find Movies by searching for titles or genres</h3>
     </header>
+
+    <h2> Welcome to our user-database.</h2>
+    <section ng-show="users.all.length">
+      <p>Here are a list of our current users:</p>
+      <ul>
+        <li ng-repeat="user in users.all">
+          <strong>{{user.local.fullname}}</strong> {{ user.local.username}} - {{ user.local.email}}
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Login</h3>
+      <form id="login" ng-submit="users.login()">
+        <label for="email">Email</label>
+        <input type="text" name="email" placeholder="What is your email?" ng-model="users.user.email">
+
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="What is your password?" ng-model="users.user.password">
+
+        <input type="submit" value="Access">
+      </form>
+    </section>
+
+    <section>
+      <h3>Register</h3>
+      <form id="register" ng-submit="users.register()">
+        
+
+        <label for="fullname">Full Name</label>
+        <input type="fullname" name="fullname" placeholder="fullname" ng-model="users.user.fullname">
+
+
+        <label for="email">Email</label>
+        <input type="text" name="email" placeholder="What is your email?" ng-model="users.user.email">
+
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Password" ng-model="users.user.password">
+
+        <input type="submit" value="Access">
+      </form>
+    </section>
+
+
 
     <form id="movies" ng-submit="movies.getMovies()">
       <input type="text" placeholder="Enter Movie Title" ng-model="movies.title">

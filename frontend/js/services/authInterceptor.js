@@ -1,5 +1,5 @@
 angular 
-  .module('users')
+  .module('FlicPic')
   .factory('AuthInterceptor', AuthInterceptor);
 
 AuthInterceptor.$inject = ['API', 'TokenService'];

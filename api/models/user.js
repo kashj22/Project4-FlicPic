@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
 var userSchema = mongoose.Schema ({
-  firstname: { type: String },
-  lastname: { type: String },
+  fullname: { type: String },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true }
+});
 
 userSchema.statics.encrypt = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);

@@ -1,5 +1,5 @@
 angular 
-  .module('users')
+  .module('FlicPic')
   .service('TokenService', TokenService);
 
 TokenService.$inject = ['$window', 'jwtHelper'];
