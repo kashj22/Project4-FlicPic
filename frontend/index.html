@@ -13,23 +13,28 @@
       <h3>Find Movies by searching for titles or genres</h3>
     </header>
 
-    <form id="movies" method="GET" ng-submit="movies.getMovies()">
-      <input type="text" placeholder="Enter Movie Title" ng-model="movie">
-      </form>
+    <form id="movies" ng-submit="movies.getMovies()">
+      <input type="text" placeholder="Enter Movie Title" ng-model="movies.title">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
     
-    <form id="genres" method="GET" ng-submit="movies.getGenres()">
-      <select ng-model="genre" ng-options="genre.id as genre.name for genre in movies.genres"></select>
+  </main>
+  <!--   <form id="genres" method="GET" ng-submit="movies.getGenres()">
+      <select ng-model="genre.name" ng-options="genre.id as genre.name for genre in movies.genres"></select>
+      <button type="submit" class="btn btn-default" ng-click="getGenres">Submit</button>
       </form>  
 
     <form id="actors" method="GET" ng-submit="movies.getActors()">
-      <input type="text" placeholder="Enter Actor Name" ng-model="actor">  
+      <input type="text" placeholder="Enter Actor Name" ng-model="person.name"> 
+      <button type="submit" class="btn btn-default" ng-click="GetActors">Submit</button> 
       </form>
     
     
     <form id="years" method="GET" ng-submit="movies.getYears()">
-      <input type="text" placeholder="Enter Movie Year" ng-model="year">  
-    </form>
+      <input type="text" placeholder="Enter Movie Year" ng-model="year"> 
+      <button type="submit" class="btn btn-default" ng-click="GetYears">Submit</button> 
+    </form> -->
     
 
-</body>
-</html>
+  </body>
+  </html>
