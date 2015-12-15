@@ -3,7 +3,7 @@ angular.module('FlicPic', [])
 
   // create the controller and inject $http
   MoviesController.$inject = ['$http'];
-  function MoviesController($http){
+  function MoviesController($http, genre){
 
     getGenres()
 
@@ -13,10 +13,11 @@ angular.module('FlicPic', [])
     //get all of the movies
     this.all = [];
 
-    this.getMovies = getMovies;
+    this.getMovieByGenre = getMovieByGenre;
+    this.getMovies       = getMovies;
     // find out how to put all of the genres in a drop down box
 
-    this.title = "FlicPic"
+    // this.title = "FlicPic"
     // this.addMovie = addMovie;
     // this.newMovie = {};
 
@@ -34,13 +35,27 @@ angular.module('FlicPic', [])
     }
 
     function getGenres() {
-      console.log("test")
+      var url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=213e6d38b03c7af40fb82d70ad6f0139'
       $http
-        .get('https://api.themoviedb.org/3/genre/movie/list?api_key=213e6d38b03c7af40fb82d70ad6f0139') //https://api.themoviedb.org/3/genre/movie/list?api_key=213e6d38b03c7af40fb82d70ad6f0139
+        .get(url) //https://api.themoviedb.org/3/genre/movie/list?api_key=213e6d38b03c7af40fb82d70ad6f0139
         //genre/id/movies gets a list of movies for a particular genre by id
         .then(function(res) {
           console.log(res.data);
           self.genres = res.data.genres;
+        });
+    }
+
+    function getMovieByGenre(genre) {
+
+
+
+      var url = 'http://api.themoviedb.org/3/genre/' + genre + '/movies&api_key=213e6d38b03c7af40fb82d70ad6f0139' //'http://api.themoviedb.org/3/search/genre/id/movies?query=' + self.genres + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
+
+      $http
+        .get(url)
+        .then(function(res) {
+          console.log(res);
+          self.all 
         });
     }
 
@@ -64,8 +79,7 @@ angular.module('FlicPic', [])
     //     });
     // }
 
-  
-
+        // getMovieByGenre();
     // getMovies();
     // getGenres();
     // getActors();
