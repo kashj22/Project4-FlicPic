@@ -13,6 +13,7 @@ angular.module('FlicPic')
     //get all of the movies
     this.all = [];
 
+
     this.getMovieByGenre = getMovieByGenre;
     this.getMovies       = getMovies;
     // this.getActors       = getActors;
@@ -55,7 +56,7 @@ angular.module('FlicPic')
         .get(url)
         .then(function(res) {
           console.log(res);
-          self.all 
+          self.all = res.data.results;
         });
     }
 
