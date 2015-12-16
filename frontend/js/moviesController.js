@@ -29,7 +29,7 @@ angular.module('FlicPic', [])
     function getMovies() {
       var url = 'http://api.themoviedb.org/3/search/movie?query=' + this.title + '&api_key=213e6d38b03c7af40fb82d70ad6f0139'
       $http
-        .get(url)//api url
+        .get(url)
         .then(function(res) {
           console.log(res);
           self.all = res.data.movies;
