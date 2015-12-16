@@ -2,8 +2,8 @@ angular
   .module('FlicPic')
   .controller('UsersController', UsersController)
 
-  UsersController.$inject = ['Users', 'TokenService']
-  function UsersController(Users, TokenService) {
+  UsersController.$inject = ['User', 'TokenService']
+  function UsersController(User, TokenService) {
     var self = this;
 
     self.all = [];

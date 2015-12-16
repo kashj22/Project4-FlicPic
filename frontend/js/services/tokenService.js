@@ -12,7 +12,7 @@ function TokenService($window, jwtHelper){
   }
   self.getToken = function(){
     return $window.localStorage.getItem('token');
-}
+  }
   self.removeToken = function(){
     return $window.localStorage.removeItem('token');
   }

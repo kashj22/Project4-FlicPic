@@ -1,4 +1,4 @@
-angular.module('FlicPic', [])
+angular.module('FlicPic')
   .controller('MoviesController', MoviesController);
 
   // create the controller and inject $http

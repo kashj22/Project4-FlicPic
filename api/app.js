@@ -11,6 +11,7 @@ var expressJWT     = require('express-jwt');
 var app            = express();
 var config         = require('./config/config');
 var User           = require('./models/user');
+var passport       = require('passport');
 var secret         = config.secret;
 
 
