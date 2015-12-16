@@ -10,7 +10,7 @@ module.exports = function(passport) {
   }, function(req, email, password, done) {
 
     // Find a user with this email
-    User.findOne({ 'local.email' : email }, function(err, user) {
+    User.findOne({ 'email' : email }, function(err, user) {
       // Error found
       if (err) return done(err, false, { message: "Something went wrong." });
 
@@ -18,9 +18,9 @@ module.exports = function(passport) {
       if (user) return done(null, false, { message: "Please choose another email." });
 
       var newUser            = new User();
-      newUser.local.email    = email;
-      newUser.local.fullname = req.body.fullname;
-      newUser.local.password = User.encrypt(password);
+      newUser.email    = email;
+      newUser.fullname = req.body.fullname;
+      newUser.password = User.encrypt(password);
 
       newUser.save(function(err, user) {
         // Error found

@@ -57,7 +57,7 @@ app.use(function (err, req, res, next) {
 var routes = require('./config/routes.js')
 
 // Telling our app to use routes.js
-app.use(routes);
+app.use('/api', routes);
 
 // start express listening on port 3000
 app.listen(process.env.PORT || 3000);
