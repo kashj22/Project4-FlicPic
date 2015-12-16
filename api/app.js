@@ -18,13 +18,41 @@ var secret         = config.secret;
 var mongoose       = require('mongoose');
 mongoose.connect(config.database);
 
-// Require our routes.js
-var routes = require('./config/routes.js')
+require('./config/passport')(passport);
 
-// Set up middleware
-app.use(morgan('dev'));
+app.use(methodOverride(function(req, res){
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}));
+
+// set up middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(morgan('dev'));
+app.use(cors());
+app.use(passport.initialize());
+
+app.use('/api', expressJWT({ secret: secret })
+  .unless({
+    path: [
+      { url: '/api/login', methods: ['POST'] },
+      { url: '/api/register', methods: ['POST'] }
+    ]
+  }));
+
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    return res.status(401).json({message: 'Unauthorized request.'});
+  }
+  next();
+});
+
+// Require our routes.js
+var routes = require('./config/routes.js')
 
 // Telling our app to use routes.js
 app.use(routes);

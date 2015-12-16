@@ -1,11 +1,13 @@
 var express = require('express'),
     router = express.Router(),
-    bodyParser = require('body-parser'), //parses information from POST
-    methodOverride = require('method-override'); //used to manipulate POST
+    passport = require("passport");
+
+    // bodyParser = require('body-parser'), //parses information from POST
+    // methodOverride = require('method-override'); //used to manipulate POST
 
 var moviesController = require('../controllers/movies.js'); 
-var usersController = require('../controllers/usersController');     
-var authenticationsController = require('../controllers/authenticationsController');     
+var usersController = require('../controllers/usersController.js');     
+var authenticationsController = require('../controllers/authenticationsController.js');     
 
 router.post('/login', authenticationsController.login);
 router.post('/register', authenticationsController.register);
