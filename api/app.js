@@ -12,8 +12,8 @@ var app            = express();
 var config         = require('./config/config');
 var User           = require('./models/user');
 var passport       = require('passport');
+var cookieParser   = require("cookie-parser");
 var secret         = config.secret;
-
 
 // Setup the connection to our database
 var mongoose       = require('mongoose');
