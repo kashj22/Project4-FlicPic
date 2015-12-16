@@ -36,8 +36,8 @@
     </header>
 
 
-    <div ng-if="(users.loggedIn())">
-      <h3>Welcome back, {{ users.user.local.fullname }}!</h3>
+    <div ng-if="(users.isloggedIn())">
+      <h3>Welcome back, {{ users.user.fullname }}!</h3>
     </div>
 
     <section ng-if="(users.loggedIn())">
@@ -50,7 +50,7 @@
     </section>  
    
 
-    <section ng-if="(!users.loggedIn())">
+    <section ng-if="(!users.isloggedIn())">
       <h3>Login</h3>
       <form id="login" ng-submit="users.login()">
         <label for="email">Email</label>
@@ -65,7 +65,7 @@
 
     {{ users.user }}
 
-    <section ng-if="(!users.loggedIn())">
+    <section ng-if="(!users.isloggedIn())">
       <h3>Register</h3>
       <form id="register" ng-submit="users.register()">
         
@@ -86,20 +86,22 @@
 
     <br>
 
-    <form id="movies" ng-submit="movies.getMovies()">
-      <input type="text" placeholder="Enter Movie Title" ng-model="movies.title">
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+    <section ng-show="users.isLoggedIn()">
+      <form id="movies" ng-submit="movies.getMovies()">
+        <input type="text" placeholder="Enter Movie Title" ng-model="movies.title">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
 
-<!--     <div ng-view></div> -->
+  <!--     <div ng-view></div> -->
+      
+      <form id="genres" method="GET" ng-submit="movies.getMovieByGenre(genre)">
+        <select ng-model="genre.name" ng-options="genre.id as genre.name for genre in movies.genres"></select>
 
-    <form id="genres" method="GET" ng-submit="movies.getMovieByGenre(genre)">
-      <select ng-model="genre.name" ng-options="genre.id as genre.name for genre in movies.genres"></select>
+        <!-- {{ genre.name }} -->
 
-      <!-- {{ genre.name }} -->
-
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>  
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> 
+    </section> 
 
    
   </main>

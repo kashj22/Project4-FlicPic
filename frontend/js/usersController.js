@@ -13,8 +13,6 @@ angular
       var token = res.token ? res.token : null;
 
       if(token) {
-        console.log(res);
-
         self.getUsers();
         self.user = TokenService.getUser();
       }
@@ -24,6 +22,7 @@ angular
 
     self.login = function(){
       User.login(self.user, handleLogin);
+      
     }
 
     self.register = function() {
@@ -44,9 +43,11 @@ angular
     }
 
     self.isLoggedIn = function() {
+      console.log("logged in ?", !!TokenService.getToken())
       return !!TokenService.getToken();
     }
-    if (self.isLoggedIn ()){
+    
+    if (self.isLoggedIn()){
       self.getUsers();
       self.user = TokenService.getUser();
     }
