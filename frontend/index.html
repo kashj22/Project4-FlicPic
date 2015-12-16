@@ -106,7 +106,11 @@
       </form> 
     </section> 
 
-   
+   <ul ng-repeat="n in movies.all">
+    <li>
+      <img ng-src="http://image.tmdb.org/t/p/w500/{{n.poster_path}}">
+    </li>
+   </ul>
   </main>
 
   <!-- jQuery lib -->

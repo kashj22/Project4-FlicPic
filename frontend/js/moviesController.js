@@ -31,8 +31,7 @@ angular.module('FlicPic')
       $http
         .get(url)
         .then(function(res) {
-          console.log(res);
-          self.all = res.data.movies;
+          self.all = res.data.results;
         });
     }
 
